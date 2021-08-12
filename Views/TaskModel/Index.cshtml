@@ -1,0 +1,59 @@
+@model List<TaskModel>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Add" asp-controller="TaskModel">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                DateOfCreate
+            </th>
+            <th>
+                Status
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateOfCreate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @if (item.Status.Equals("new"))
+        {
+@using (Html.BeginForm("InProgress", "TaskModel", new { id = @item.Id }))
+{
+<button type="submit">InProgress</button>}
+                    @using (Html.BeginForm("Delete", "TaskModel", new { id = @item.Id }))
+                    {
+<button type="submit">Delete</button>}}
+        @if (item.Status.Equals("inProgress"))
+        {
+@using (Html.BeginForm("Done", "TaskModel", new { id = @item.Id }))
+{
+<button type="submit">Done</button>}}
+        @if (item.Status.Equals("done"))
+        {
+<p>Task complit</p>}
+    </td>
+</tr>}
+
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@model TaskModel
+@{
+    ViewBag.Title = "Task";
+    Layout = "_Layout";
+}
+<h2>@Model.Name</h2>
+<div class="table_section">
+    <table style="width: 100%;">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date of create</th>
+            <th>Date of release</th>
+            <th>Status</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.DateOfCreate</td>
+            <td>@Model.DateOfRelease</td>
+            <td>@Model.Status</td>
+            <td>@Model.Description</td>
+        </tr>
+    </table>
+</div>

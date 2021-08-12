@@ -1,0 +1,25 @@
+@model TaskModel
+@{
+    ViewBag.Title = "Create new";
+    Layout = "_Layout";
+}
+<h2>Fill out the form to add task</h2>
+<div class="row">
+    <div class="task_add_form col-md-6">
+        <form asp-action="Add" method="post">
+            <div class="form_row">
+                <label for="">
+                    Name
+                    <input asp-for="Name" type="text">
+                </label>
+            </div>
+            <div class="form_row">
+                <label for="">
+                    Description
+                    <input asp-for="Description" type="text">
+                </label>
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</div>
